@@ -6,7 +6,7 @@ const moment = require('moment-timezone');
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.GEMINIAI_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest"});
+const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 
 const jobs = require('./jobs.json');
 const firstNames = require('./firstNames.json');
@@ -310,6 +310,7 @@ async function createNewCitizen(twoParents){
             baby.firstName = truncateAtHyphen(baby.firstName);
             baby.age = 0;
             baby = removeHallucinations(baby);
+            baby = removeEqualSign(baby);
            
             //console.log(baby);
         
@@ -524,6 +525,17 @@ function trimProperties(obj) {
     }
     return obj;
 }
+
+//function to  remove any '=' from a person
+function removeEqualSign(obj) {
+    for (let key in obj) {
+        if (typeof obj[key] === 'string' && obj[key].includes('=')) {
+            obj[key] = obj[key].replace('=', '');
+        }
+    }
+    return obj;
+}
+
 
 // Start the server
 app.listen(port, () => {
