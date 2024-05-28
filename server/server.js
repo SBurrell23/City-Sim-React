@@ -256,7 +256,7 @@ app.get('/createStartingCitizens', async (req, res) => {
 });
 
 birthNewCitizen();
-//setInterval(birthNewCitizen, 10000); 
+setInterval(birthNewCitizen, 10000); 
 
 async function birthNewCitizen(){
     const randomNeighborhood = getRandomNeighborhood();  
@@ -301,7 +301,7 @@ async function createNewCitizen(twoParents){
             baby.born = moment.utc().format('YYYY-MM-DD HH:mm:ss');
             baby.parentA = twoParents[0].id;
             baby.parentB = twoParents[1].id;
-            baby.firstName = getRandomFirstName(); //Override the first name variety
+            baby.firstName = getRandomFirstName(); //Override the first name 
             baby.job = getRandomJob(); //Override the job to create true continued variety
             const capitalizeFirstLetter = name => name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
             baby.firstName = capitalizeFirstLetter(baby.firstName);

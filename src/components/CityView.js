@@ -1,33 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Row, Col } from 'react-bootstrap';
 
 function CityView() {
     const [neighborhoods, setNeighborhoods] = useState([]);
 
     useEffect(() => {
+        getNeighborhoods();
+        const interval = setInterval(() => {
+            getNeighborhoods();
+        }, 5000); // 5 seconds
+        return () => clearInterval(interval);
+    }, []);
+
+    function getNeighborhoods() {
         axios.get('http://localhost:8080/neighborhoodStats')
             .then(response => {
-                setNeighborhoods(response.data); 
+                setNeighborhoods(response.data);
             })
             .catch(error => {
                 console.log(error);
             });
-    }, []);
+    }
+
+    
 
     return (
-        <div>
+        <div className="container" style={{width:"100%"}}>
             <h2>City View</h2>
-            <Row>
+            <div className='row'>
                 {neighborhoods.map((neighborhood, index) => (
-                    <Col key={index} xs={6} md={3}>
-                        <div className="neighborhood-card">
-                            <h3>{neighborhood.neighborhood}</h3>
-                            <p>Population: {neighborhood.count}</p>
+                    <div key={index} className="col-3 mb-2">
+                        <div className={`card nhCard ${neighborhood.changed ? 'flash' : ''}`}>
+                            <div className="card-body">
+                                <h5 className="card-title">{neighborhood.neighborhood}</h5>
+                                <p className="card-text">Population: {neighborhood.count}</p>
+                            </div>
                         </div>
-                    </Col>
+                    </div>
                 ))}
-            </Row>
+            </div>
         </div>
     );
 };

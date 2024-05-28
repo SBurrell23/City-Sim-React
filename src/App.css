@@ -1,38 +1,22 @@
-.App {
-  text-align: center;
+.nhCard {
+  transition: background-color 0.4s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nhCard:hover {
+  background-color: rgb(228, 228, 228);
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nhCard:not(:hover) {
+  background-color: transparent;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.flash {
+  animation: flash 1s;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes flash {
+  0% { background-color: transparent; }
+  50% { background-color: rgb(175, 244, 175); }
+  100% { background-color: transparent; }
 }
