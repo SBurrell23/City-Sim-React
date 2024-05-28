@@ -8,7 +8,7 @@ function CityView() {
     useEffect(() => {
         axios.get('http://localhost:8080/neighborhoodStats')
             .then(response => {
-                setNeighborhoods(response.data);
+                setNeighborhoods(response.data); 
             })
             .catch(error => {
                 console.log(error);
