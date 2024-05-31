@@ -20,3 +20,7 @@
   50% { background-color: rgb(175, 244, 175); }
   100% { background-color: transparent; }
 }
+
+.hoodCard{
+  min-height: 600px;
+}
