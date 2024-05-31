@@ -20,6 +20,7 @@ app.use(express.json());
 const port = 8080;
 app.use(cors()); //Adjust this for production
 
+console.log(process.env.DB_HOST);
 
 // MySQL Connection Pool
 const connectionPool = mysql.createPool({
