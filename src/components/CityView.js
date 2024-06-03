@@ -7,8 +7,10 @@ function CityView() {
 
     return (
         <div className="container" style={{width:"100%"}}>
-            <h2 className="mb-4 mt-4">City View</h2>
+            <h2 className="mb-4 mt-4">Simreact City</h2>
             <NeighborhoodGrid />
+            <hr></hr>
+            <h3 className="mb-4 mt-4">City Stats</h3>
             <MostRecentCitizen />
         </div>
     );

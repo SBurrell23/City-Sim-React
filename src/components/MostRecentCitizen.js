@@ -24,7 +24,7 @@ function MostRecentCitizen() {
 
 
     return (
-        <div className="mt-5">
+        <div className="mt-2">
             {person.id !== undefined ? (
                 <div className ="row">
                     <div className="col-4">
@@ -84,7 +84,7 @@ function MostRecentCitizen() {
                             </tbody>
                         </table>
                     </div>
-                    <div className="col-4">
+                    <div className="col-4"> 
                         <h4 className="mb-4">Parent A Details</h4>
                         <table className="table table-sm table-bordered">
                             <thead className="thead-dark">
