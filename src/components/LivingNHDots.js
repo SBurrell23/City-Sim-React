@@ -54,7 +54,7 @@ function LivingNHDots({ stats }) {
 
   return (
     <div className="livingNHDotsContainer" id="livingNHDotsContainerId">
-        <canvas ref={canvasRef} width={1000} height={300} />
+        <canvas ref={canvasRef} width={1200} height={300} />
     </div>
   );
 }
